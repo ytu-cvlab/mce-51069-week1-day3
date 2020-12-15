@@ -1,0 +1,7 @@
+Importing Jupyter notebook from Assignment1.ipynb
+
+tests run: 4
+errors: 0
+failures: 0
+success: 4
+skipped: 0
