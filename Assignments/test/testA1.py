@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 
 
 class TestNotebook(unittest.TestCase):
-    
+
     def setUp(self):
         self.array1 = np.linspace(1, 20, 60)
         self.array2 = np.random.randn(60)
@@ -34,11 +34,11 @@ class TestNotebook(unittest.TestCase):
 
     def test_no_2(self):
         self.assertEqual(a1.stack_channels(self.r, self.g, self.g).shape, (900,900,3))
-        
+
     def test_no_3(self):
         # Test Sigmoid
-        self.assertTrue(np.all(a1.sigmoid(self.array2)[0]==self.sigmoid_))
-        
+        self.assertTrue(np.all(a1.sigmoid(self.array2)==self.sigmoid_))
+
     def test_no_4(self):
         img_ = a1.read_img("images/cvml.png")
         green_ = a1.get_green_channel(img_)
@@ -49,24 +49,24 @@ class TestNotebook(unittest.TestCase):
         # Test read_img function
         self.assertEqual(img_.shape, (900, 900, 4))
         self.assertTrue(np.all(img_[:,:,:3]==self.img))
-        
+
         # Test get_green function
         self.assertTrue(np.all(green_==self.img[:,:,1]))
         self.assertEqual(green_.shape, (900,900))
-        
+
         # Test resize function
         self.assertEqual(resized_.shape, (500, 600))
         self.assertEqual(resized__.shape, (350, 600, 4))
         # Test rotate function
         self.assertEqual(np.sum(rotated[:100,:])+np.sum(rotated[400:,:]), 250.0)
         self.assertEqual(rotated_[100, 30], 1.0)
-        
-        
+
+
     def test_no_5(self):
         # Test h-stack dim output
         self.assertEqual(a1.stack_images(self.green, self.green).shape, (6, 20))
-        
-    
+
+
 
 
 if __name__ == '__main__':
