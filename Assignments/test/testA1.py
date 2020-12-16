@@ -22,8 +22,10 @@ class TestNotebook(unittest.TestCase):
         self.img = mpimg.imread("images/cvml.png")[:,:,:3]
         self.sigmoid_ = 1/(1+np.exp(-self.array2))
         self.green = self.array2.reshape(6, 10)
-        
-    
+        self.r = np.linspace(1, 10, 810000).reshape((500,1620))
+        self.g = np.linspace(1, 10, 810000).reshape((900,900))
+
+
     def test_mse(self):
         self.assertEqual(a1.mean_square_error(self.array1, self.array2), self.mse1)
         self.assertEqual(a1.mean_square_error(self.array2, self.array3), self.mse2)
@@ -31,7 +33,7 @@ class TestNotebook(unittest.TestCase):
 
 
     def test_no_2(self):
-        self.assertEqual(a1.stack_channels(self.array1.reshape(2, 30), self.green, self.green).shape, (6, 10, 3))
+        self.assertEqual(a1.stack_channels(self.r, self.g, self.g).shape, (900,900,3))
         
     def test_no_3(self):
         # Test Sigmoid
